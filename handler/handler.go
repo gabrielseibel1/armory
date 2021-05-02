@@ -18,7 +18,7 @@ func NewArmoryProvider() *ArmoryProvider {
 
 func (a *ArmoryProvider) Hello() echo.HandlerFunc {
 	return func(c echo.Context) error {
-		return c.String(http.StatusOK, "Armory: Hello, Wolrd!")
+		return c.String(http.StatusOK, "Armory: Hello, World!")
 	}
 }
 
