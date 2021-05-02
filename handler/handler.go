@@ -10,19 +10,19 @@ type Provider interface {
 	Home() echo.HandlerFunc
 }
 
-type ArmoryProvider struct{}
+type provider struct{}
 
-func NewArmoryProvider() *ArmoryProvider {
-	return &ArmoryProvider{}
+func NewArmoryProvider() Provider {
+	return &provider{}
 }
 
-func (a *ArmoryProvider) Hello() echo.HandlerFunc {
+func (a *provider) Hello() echo.HandlerFunc {
 	return func(c echo.Context) error {
 		return c.String(http.StatusOK, "Armory: Hello, World!")
 	}
 }
 
-func (a *ArmoryProvider) Home() echo.HandlerFunc {
+func (a *provider) Home() echo.HandlerFunc {
 	return func(c echo.Context) error {
 		return c.File("index.html")
 	}
