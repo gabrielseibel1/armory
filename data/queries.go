@@ -26,7 +26,6 @@ type Queryer interface {
 	//*Q6 - todo: query character view + mounts
 		// CharacterMounts(char string) ([]model.Mount, error) // todo: integrate character view
 
-	//*Q7 - todo: query achievements panel (achievs group by type select sum points)
 	//*Q8 - todo: query achievement points history grouped by month since a given year (group by (month, year) having year > x)
 
 	//*Q9 - todo: select all equips where ilvl > ilvl of character with max(ilvl)
