@@ -35,6 +35,8 @@ func main() {
 	e.GET("/", h.Home())
 	e.GET("/hello", h.Hello())
 	e.GET("/tables", h.Tables())
+	e.GET("/mounts", h.CharacterMounts())
+	e.GET("/achievements", h.AllCharacterAchievements())
 
 	e.Logger.Fatal(e.Start(":8742"))
 }
