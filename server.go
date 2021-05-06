@@ -20,7 +20,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	db:= sql.OpenDB(conn)
+	db := sql.OpenDB(conn)
 	defer db.Close()
 
 	q := data.NewQueryer(db)
@@ -33,10 +33,18 @@ func main() {
 	e.Use(middleware.Recover())
 
 	e.GET("/", h.Home())
-	e.GET("/hello", h.Hello())
-	e.GET("/tables", h.Tables())
-	e.GET("/mounts", h.CharacterMounts())
-	e.GET("/achievements", h.AllCharacterAchievements())
+	e.GET("/ranking", h.CharactersRanking())
+	e.GET("/charactersThatAchievedMoreThanGuilds", h.CharactersThatAchievedMoreThanGuilds())
+	e.GET("/itemsWithHigherLevelThanHighestPlayerILvl", h.ItemsWithHigherLevelThanHighestPlayerILvl())
+	e.GET("/character", h.Character())
+	e.GET("/characterAndMounts", h.CharacterAndMounts())
+	e.GET("/characterAndEquipments", h.CharacterAndEquipments())
+	e.GET("/characterAndAchievements", h.CharacterAndAchievements())
+	e.GET("/characterAndAchievementsPanel", h.CharacterAndAchievementsPanel())
+	e.GET("/characterAchievementPointsPerMonth", h.CharacterAchievementPointsPerMonth())
+	e.GET("/guildAchievements", h.GuildAchievements())
+	e.GET("/unearned", h.UnearnedAchievements())
+	e.GET("/requirements", h.AchievementsWithRequirements())
 
 	e.Logger.Fatal(e.Start(":8742"))
 }
