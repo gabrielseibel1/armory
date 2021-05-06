@@ -5,25 +5,76 @@
     <title>Armory</title>
 </head>
 <body>
-This is the Armory homepage.
+
+<h1>The Armory</h1>
+
+Esta é uma adaptação simples do <a href="https://worldofwarcraft.com/en-us/character/us/Azralon/Arenae">WoW Armory</a>.
+Veja o código fonte <a href="https://github.com/gabrielseibel1/armory">aqui</a>.
 Lok'Tar Ogar!
 
-<form method="get" action="/hello">
-    <button type="submit">Greetings Page</button>
+<h2>Geral</h2>
+
+<form method="get" action="/ranking">
+    <button type="submit">ranking de personagens por conquistas</button>
 </form>
 
-<form method="get" action="/tables">
-    <button type="submit">Tables</button>
+<form method="get" action="/charactersThatAchievedMoreThanGuilds">
+    <button type="submit">personagens com escore de conquistas maior que guildas</button>
 </form>
 
-<form method="get" action="/mounts">
-    Character: <input type="text" name="character"/>
-    <button type="submit">Mounts</button>
+<form method="get" action="/itemsWithHigherLevelThanHighestPlayerILvl">
+    <button type="submit">items com nível maior que ilvl de personagem com maior ilvl</button>
 </form>
 
-<form method="get" action="/achievements">
-    Character: <input type="text" name="character"/>
-    <button type="submit">Achievements</button>
+<h2>Personagens</h2>
+
+<form method="get" action="/character">
+    personagem: <input type="text" name="character"/>
+    <button type="submit">detalhes</button>
+</form>
+
+<form method="get" action="/characterAndMounts">
+    personagem: <input type="text" name="character"/>
+    <button type="submit">montarias</button>
+</form>
+
+<form method="get" action="/characterAndEquipments">
+    personagem: <input type="text" name="character"/>
+    <button type="submit">equipamentos</button>
+</form>
+
+<form method="get" action="/characterAndAchievements">
+    personagem: <input type="text" name="character"/>
+    tipo de conquista: <input type="text" name="type"/>
+    subtipo de conquista: <input type="text" name="subtype"/>
+    <button type="submit">conquistas</button>
+</form>
+
+<form method="get" action="/characterAndAchievementsPanel">
+    personagem: <input type="text" name="character"/>
+    <button type="submit">painel de conquistas</button>
+</form>
+
+<form method="get" action="/characterAchievementPointsPerMonth">
+    personagem: <input type="text" name="character"/>
+    mínimo de pontos: <input type="text" name="minPoints"/>
+    <button type="submit">escore de conquistas por mês</button>
+</form>
+
+<h2>Conquistas</h2>
+
+<form method="get" action="/unearned">
+    <button type="submit">conquistas não obtidas</button>
+</form>
+
+
+<form method="get" action="/requirements">
+    <button type="submit">conquistas com requisitos</button>
+</form>
+
+<form method="get" action="/guildAchievements">
+    guilda: <input type="text" name="guild"/>
+    <button type="submit">conquistas da guilda</button>
 </form>
 
 </body>
