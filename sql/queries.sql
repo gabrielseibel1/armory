@@ -99,7 +99,6 @@ from guildas g
 where g.nome = 'Invicta Sanguine';
 
 -- Q5 - query character view + equipment
--- todo: faltou o nome da parte
 select p.personagem_nome,
        p.titulo,
        p.especializacao_nome,
@@ -172,7 +171,8 @@ order by extract(year from pc."data") desc, extract(month from pc."data") desc;
 
 
 -- Q8 - select all equips where ilvl > ilvl of character with max(ilvl)
-select e.nome,
+select pa.nome,
+       e.nome,
        e.nivel,
        e.estamina,
        e.forca,
@@ -186,6 +186,7 @@ select e.nome,
        e.preco,
        e.durabilidade_max
 from equipamentos e
+    join partes pa on e.fk_parte_id = pa.id
 where e.nivel > (
     select round(avg(e.nivel))
     from personagens p
