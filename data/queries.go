@@ -106,16 +106,27 @@ func (q *queryer) CharactersThatAchievedMoreThanGuilds() ([]model.Character, err
 
 func (q *queryer) ItemsWithHigherLevelThanHighestPlayerILvl() ([]model.Item, error) {
 	rows, err := q.db.Query(`
-		select 
-		       e.nome, e.nivel, e.estamina,
-		       e.forca, e.intelecto, e.agilidade, 
-		       e.critico, e.aceleracao, e.versatilidade, e.maestria,
-		       e.nivel_min, e.preco, e.durabilidade_max
+		select pa.nome,
+			   e.nome,
+			   e.nivel,
+			   e.estamina,
+			   e.forca,
+			   e.intelecto,
+			   e.agilidade,
+			   e.critico,
+			   e.aceleracao,
+			   e.versatilidade,
+			   e.maestria,
+			   e.nivel_min,
+			   e.preco,
+			   e.durabilidade_max
 		from equipamentos e
+			join partes pa on e.fk_parte_id = pa.id
 		where e.nivel > (
-			select round(avg(e.nivel))from personagens p
-			join personagens_equipamentos pe on pe.fk_personagens_id = p.id
-			join equipamentos e on e.id = pe.fk_equipamentos_id
+			select round(avg(e.nivel))
+			from personagens p
+					 join personagens_equipamentos pe on pe.fk_personagens_id = p.id
+					 join equipamentos e on e.id = pe.fk_equipamentos_id
 			group by p.id
 			order by avg(e.nivel) desc
 			limit 1
@@ -129,6 +140,7 @@ func (q *queryer) ItemsWithHigherLevelThanHighestPlayerILvl() ([]model.Item, err
 	for rows.Next() {
 		var e model.Item
 		err := rows.Scan(
+			&e.Part,
 			&e.Name, &e.Level, &e.Stamina,
 			&e.Strength, &e.Intellect, &e.Agility,
 			&e.CriticalStrike, &e.Haste, &e.Versatility, &e.Mastery,
